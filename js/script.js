@@ -1,42 +1,34 @@
 "use strict";
 
-const box = document.querySelector("#box");
-const buttons = document.querySelectorAll("button");
-const circles = document.querySelectorAll(".circle");
-const circle = document.querySelector(".circle");
-const hearts = document.querySelectorAll(".heart");
-const circleWrapper = document.querySelector(".circle__wrapper");
+const adv = document.querySelectorAll(".promo__adv img"),
+    wrapper = document.querySelector(".promo__bg"),
+    genre = wrapper.querySelector(".promo__genre"),
+    seriesList = document.querySelector(".promo__interactive-list");
 
-box.style.cssText = "background-color: red; width: 100px; height: 100px";
+const seriesDB = {
+    series: [
+        "Omar",
+        "The Final Legacy",
+        "Ertugrul",
+        "Magnificent Century",
+        "The Great Seljuks: Guardians...",
+    ],
+};
 
-buttons[0].style.width = "100px";
-circles[1].style.backgroundColor = "yellow";
-circle.style.backgroundColor = "yellow";
+// adv.forEach((item) => {
+//     item.remove();
+// });
 
-// for (let i = 0; i < hearts.length; i++) {
-//   hearts[i].style.backgroundColor = 'green'
-// }
+genre.textContent = "comedy";
 
-// hearts.forEach((item) => {
-//   item.style.backgroundColor = 'gray'
-// })
+wrapper.style.backgroundImage = 'url("img/2.jpg")';
 
-const btn = document.createElement("button");
-// const text = document.createTextNode('I am text')
+seriesList.innerHTML = "";
 
-document.body.append(btn);
-
-const myCircle = document.createElement("div");
-
-myCircle.classList.add("circle");
-
-// circleWrapper.append(myCircle)
-// circleWrapper.before(myCircle)
-// circleWrapper.after(myCircle)
-// circles[0].after(myCircle)
-// circles[1].remove()
-// circles[1].replaceWith(myCircle)
-// circleWrapper.append(myCircle)
-// myCircle.innerHTML = '<pre>E</pre>'
-// myCircle.textContent = 'E'
-// circleWrapper.insertAdjacentHTML('beforeend', '<pre>E</pre>')
+seriesDB.series.forEach((item, idx) => {
+    seriesList.innerHTML += `
+    <li class="promo__interactive-item">${idx + 1} ${item}
+      <div class="delete"></div>
+    </li>
+  `;
+});
