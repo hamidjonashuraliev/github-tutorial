@@ -1,34 +1,24 @@
 "use strict";
 
-const adv = document.querySelectorAll(".promo__adv img"),
-    wrapper = document.querySelector(".promo__bg"),
-    genre = wrapper.querySelector(".promo__genre"),
-    seriesList = document.querySelector(".promo__interactive-list");
+const wrapper = document.querySelector(".btn-block"),
+    btns = document.querySelectorAll("button");
 
-const seriesDB = {
-    series: [
-        "Omar",
-        "The Final Legacy",
-        "Ertugrul",
-        "Magnificent Century",
-        "The Great Seljuks: Guardians...",
-    ],
-};
-
-// adv.forEach((item) => {
-//     item.remove();
-// });
-
-genre.textContent = "comedy";
-
-wrapper.style.backgroundImage = 'url("img/2.jpg")';
-
-seriesList.innerHTML = "";
-
-seriesDB.series.forEach((item, idx) => {
-    seriesList.innerHTML += `
-    <li class="promo__interactive-item">${idx + 1} ${item}
-      <div class="delete"></div>
-    </li>
-  `;
+btns[0].addEventListener("click", () => {
+    btns[1].classList.toggle("red");
 });
+
+wrapper.addEventListener("click", (event) => {
+    if (event.target && event.target.matches("button.red")) {
+        console.log("btn click");
+    }
+});
+
+// btns.forEach((item) => {
+//   item.addEventListener('click', () => {
+//     console.log('clicked')
+//   })
+// })
+
+const btn = document.createElement("button");
+btn.classList.add("red");
+wrapper.append(btn);
