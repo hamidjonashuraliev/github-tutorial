@@ -1,24 +1,28 @@
-"use strict";
+// scope va context - object
 
-const wrapper = document.querySelector(".btn-block"),
-    btns = document.querySelectorAll("button");
+const person = {
+    ism: "john",
+    yosh: 30,
+    millati: "uzbek",
 
-btns[0].addEventListener("click", () => {
-    btns[1].classList.toggle("red");
-});
+    salom_berin() {
+        console.log("assalomu alaykum");
+    },
+    hayrlashing() {
+        console.log("salomat bo'ling");
+    },
+    tonishtiring() {
 
-wrapper.addEventListener("click", (event) => {
-    if (event.target && event.target.classList.contains("red")) {
-        console.log("btn click");
-    }
-});
+        const action = () =>  {
+            console.log(this);
+            const name = this.ism;
+            console.log(name);
 
-// btns.forEach((item) => {
-//   item.addEventListener('click', () => {
-//     console.log('clicked')
-//   })
-// })
-
-const btn = document.createElement("button");
-btn.classList.add("red");
-wrapper.append(btn);
+        }
+        action();
+        console.log(
+            `mening ismim ${this.ism} va mening millatim ${this.millati}`
+        );
+    },
+};
+person.tonishtiring();
